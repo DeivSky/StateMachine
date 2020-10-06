@@ -2,19 +2,17 @@
 Base implementation of a finite state machine with type safety.
 
 Only two classes are present:
-
 `public class StateMachine<TContext>`
-
 `public abstract class State<TContext>`
 
 
 
-## What is `<TContext>` ?
+### What is `<TContext>` ?
 This is the type of the context object of the states. Usually, in other implementations, the state machine itself serves as the context object; by providing a `public abstract class StateMachine` of sorts, so any implementation/client/product-specific state machine(context) can derive from it.
 
 
 
-## Design principles
+### Design principles
 * The state machine class should be entirely reusable, as its only purposes are to hold the currently active state and the context object, and to provide the methods needed to update the active state and to transition to the next one.
 * The context is the object that the states actually act and react upon. 
 * Each state reads and writes to the context as needed, and calls the transition to a different state on the state machine when any set of conditions are met. 
@@ -42,7 +40,7 @@ It might seem weird to constrain the constructor of a State, but if you need som
 
 
 
-### I need my constructor!!! 
+#### I need my constructor!!! 
 If you still need to instantiate your State from outside or you need to have parameters in your constructor for some reason, you can still use 
 
 `[Obsolete] public void SetState(State<TContext> state)`
