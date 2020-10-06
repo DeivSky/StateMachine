@@ -7,7 +7,7 @@ namespace StateMachines
     /// Generic state machine.
     /// </summary>
     /// <typeparam name="TContext">Type of the context object.</typeparam>
-    public class StateMachine<TContext>
+    public sealed class StateMachine<TContext>
     {
         public TContext Context { get; }
         public State<TContext> ActiveState { get; private set; }
@@ -19,7 +19,7 @@ namespace StateMachines
         /// </summary>
         /// <typeparam name="TState">Type of the initial state of the state machine.</typeparam>
         /// <param name="context">Context object.</param>
-        /// <returns></returns>
+        /// <returns>The newly created state machine.</returns>
         public static StateMachine<TContext> Instantiate<TState>(TContext context) where TState : State<TContext>, new()
         {
             var sm = new StateMachine<TContext>(context);
