@@ -16,8 +16,8 @@ This is the type of the context object of the states. Usually, in other implemen
 * There has to be compile time type safety.
 
 
-#### What is that last bullet?
-It's the reason why I'm using generics and separating the context from the state machine. Generics allow me to instantiate a context-specific state machine, which can only hold context-specific states. Non-generic, inheritance-based approaches lead to being able to easily set any state of any state machine to any other state machine, requiring more careful coding and safety checks at runtime to avoid undesired behaviour.
+#### What does compile time type safety mean?
+It is the reason why I'm using generics and separating the context from the state machine. Generics allow me to instantiate a context-specific state machine, which can only hold context-specific states. Non-generic, inheritance-based approaches lead to being able to easily set any state of any state machine to any other state machine, requiring more careful coding and safety checks at runtime to avoid undesired behaviour.
 
 
 #### This seems rather complicated
