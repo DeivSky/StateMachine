@@ -5,7 +5,7 @@ Only two classes needed:
 `public abstract class State<TContext>`
 
 
-## What is <TContext> ?
+## What is `<TContext>` ?
 This is the type of the context object of the states. Usually, in other implementations, the state machine itself serves as the context object; by providing a `public abstract class StateMachine` of sorts, so any implementation/client/product-specific state machine(context) can derive from it.
 
 
