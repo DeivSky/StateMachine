@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30524.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StateMachines", "StateMachine\StateMachines.csproj", "{F8334860-E7C3-4165-8036-2090B1C72950}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FsmTest", "FsmTest\FsmTest.csproj", "{FE886CB7-0ED7-44A4-A93D-64BA1CD0B5C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{FE886CB7-0ED7-44A4-A93D-64BA1CD0B5C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
