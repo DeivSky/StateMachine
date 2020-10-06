@@ -2,8 +2,7 @@
 Base implementation of a finite state machine with type safety.
 
 Only two classes are present:
-`public class StateMachine<TContext>`
-`public abstract class State<TContext>`
+`public class StateMachine<TContext>` and `public abstract class State<TContext>`
 
 
 
