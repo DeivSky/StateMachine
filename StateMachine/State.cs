@@ -7,27 +7,39 @@
     public abstract class State<TContext>
     {
         public TContext Context => StateMachine.Context;
-        public StateMachine<TContext> StateMachine { get; private set; }
+        public StateMachine<TContext> StateMachine { get; internal set; }
 
-        protected State() { }
-        public static TState Instantiate<TState>(StateMachine<TContext> sm) where TState : State<TContext>, new()
-        {
-            var state = new TState { StateMachine = sm };
-            state.Init();
-            return state;
-        }
+        internal void Initialize() => Init();
+        internal void Enter() => OnStateEnter();
+        internal void Exit() => OnStateExit();
+        internal void Update() => OnUpdate();         
+        internal void HandleTransitions() => ResolveTransitions();
+        internal void LateUpdate() => OnLateUpdate();
 
+        /// <summary>
+        /// Called the first time an instance of the state is added to the state machine.
+        /// </summary>
         protected virtual void Init() { }
-        public abstract void OnStateEnter();
-        public abstract void OnStateExit();
-        public void OnUpdate()
-        {
-            PreTransitionUpdate();
-            ResolveTransitions();
-            PostTransitionUpdate();
-        }
-        protected abstract void PreTransitionUpdate();
+        /// <summary>
+        /// Called when transitioning to this state.
+        /// </summary>
+        protected abstract void OnStateEnter();
+        /// <summary>
+        /// Called when transitioning from this state.
+        /// </summary>
+        protected abstract void OnStateExit();
+        /// <summary>
+        /// Called when updating the state machine.
+        /// </summary>
+        protected abstract void OnUpdate();
+        /// <summary>
+        /// Called when updating the state machine, right after <see cref="OnUpdate"/> gets called.
+        /// </summary>
         protected abstract void ResolveTransitions();
-        protected abstract void PostTransitionUpdate();
+        /// <summary>
+        /// Called when updating the state machine, right after <see cref="ResolveTransitions"/> gets called.
+        /// This means that code here will be the first to run after <see cref="OnStateEnter"/>, but won't get called after <see cref="OnStateExit"/>.
+        /// </summary>
+        protected abstract void OnLateUpdate();
     }
 }
